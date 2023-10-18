@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-lg-3 col-12">
                 <div class="item-benefit">
-                    <img src="/assets/images/ic_globe.png" class="icon" alt="">
+                    <img src="{{asset('images/ic_globe.png')}}" class="icon" alt="">
                     <h3 class="title">
                         Diversity
                     </h3>
