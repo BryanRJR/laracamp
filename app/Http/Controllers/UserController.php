@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,6 +22,7 @@ class UserController extends Controller
     public function handleProviderCallback()
     {
         $callback = Socialite::driver('google')->stateless()->user();
+
 
         $data = [
             'name' => $callback->getName(),
