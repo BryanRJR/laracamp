@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
+Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
 
 // socialite routes
 Route::get('sign-in-google', [UserController::class, 'google'])->name('user.login.google');
