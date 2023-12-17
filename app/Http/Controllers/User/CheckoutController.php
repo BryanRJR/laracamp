@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Camp;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Checkout\AfterCheckout;
 use App\Http\Requests\User\Checkout\Store;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,7 +59,7 @@ class CheckoutController extends Controller
         $this->getSnapRedirect($checkout);
 
         // sending email
-        //  Mail::to(Auth::user()->email)->send(new AfterCheckout($checkout));
+        Mail::to(Auth::user()->email)->send(new AfterCheckout($checkout));
 
         return redirect(route('checkout.success'));
     }
@@ -97,5 +99,10 @@ class CheckoutController extends Controller
     public function success()
     {
         return view('checkout.success');
+    }
+
+    public function invoice(Checkout $checkout)
+    {
+        return $checkout;
     }
 }
